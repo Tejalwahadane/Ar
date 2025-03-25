@@ -13,20 +13,20 @@
     </button>
 
     <script>
-        let scene, camera, renderer, xrRefSpace;
+        let scene, camera, renderer, xrRefSpace, session;
 
         async function startAR() {
             if (navigator.xr) {
                 try {
-                    const session = await navigator.xr.requestSession('immersive-ar', { requiredFeatures: ['local-floor'] });
+                    session = await navigator.xr.requestSession('immersive-ar', { requiredFeatures: ['local-floor'] });
 
-                    // WebGL context for WebXR
+                    // Create WebGL context for WebXR
                     const gl = document.createElement('canvas').getContext('webgl', { xrCompatible: true });
                     renderer = new THREE.WebGLRenderer({ canvas: gl.canvas, alpha: true });
                     renderer.xr.enabled = true;
                     document.body.appendChild(renderer.domElement);
 
-                    // Set up scene
+                    // Set up scene (only when AR starts)
                     scene = new THREE.Scene();
                     camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
                     scene.add(camera);
@@ -39,10 +39,10 @@
                     const geometry = new THREE.BoxGeometry(0.2, 0.2, 0.2);
                     const material = new THREE.MeshStandardMaterial({ color: 0xff0000 });
                     const cube = new THREE.Mesh(geometry, material);
-                    cube.position.set(0, 0, -1);  // Place cube 1m in front
+                    cube.position.set(0, 0, -1);  // 1m in front of the user
                     scene.add(cube);
 
-                    // Request Reference Space
+                    // Set up AR space and start rendering in XR mode
                     session.requestReferenceSpace('local-floor').then((refSpace) => {
                         xrRefSpace = refSpace;
                         session.requestAnimationFrame(renderFrame);
@@ -55,6 +55,7 @@
                         }
                         session.requestAnimationFrame(renderFrame);
                     }
+
                 } catch (err) {
                     console.error("Error starting WebXR:", err);
                 }
