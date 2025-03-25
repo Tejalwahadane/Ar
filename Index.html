@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebXR Farmer AR</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@immersive-web/xr-polyfill@latest/dist/xr-polyfill.js"></script>
+</head>
+<body style="margin: 0; overflow: hidden;">
+
+    <button id="enter-ar" style="position: absolute; top: 20px; left: 20px; z-index: 100; padding: 10px;">Enter AR</button>
+
+    <script>
+        let scene, camera, renderer;
+        let xrSession = null;
+
+        async function startXR() {
+            if (navigator.xr) {
+                try {
+                    xrSession = await navigator.xr.requestSession('immersive-ar', { requiredFeatures: ['local-floor'] });
+
+                    const gl = document.createElement('canvas').getContext('webgl');
+                    renderer = new THREE.WebGLRenderer({ canvas: gl.canvas, alpha: true });
+                    renderer.xr.enabled = true;
+
+                    document.body.appendChild(renderer.domElement);
+                    
+                    const xrRefSpace = await xrSession.requestReferenceSpace('local');
+
+                    scene = new THREE.Scene();
+                    camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+
+                    const light = new THREE.HemisphereLight(0xffffff, 0x444444);
+                    scene.add(light);
+
+                    const geometry = new THREE.CylinderGeometry(0.1, 0.1, 1, 32);
+                    const material = new THREE.MeshStandardMaterial({ color: 0x228B22 });
+                    const plant = new THREE.Mesh(geometry, material);
+                    plant.position.set(0, 0.5, -1);
+
+                    scene.add(plant);
+
+                    function renderFrame(time, frame) {
+                        let pose = frame.getViewerPose(xrRefSpace);
+                        if (pose) {
+                            renderer.render(scene, camera);
+                        }
+                        xrSession.requestAnimationFrame(renderFrame);
+                    }
+
+                    xrSession.requestAnimationFrame(renderFrame);
+                } catch (err) {
+                    console.error("Error starting WebXR: ", err);
+                }
+            } else {
+                alert("WebXR is not supported on this device.");
+            }
+        }
+
+        document.getElementById("enter-ar").addEventListener("click", startXR);
+    </script>
+</body>
+</html>
