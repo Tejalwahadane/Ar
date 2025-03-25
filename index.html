@@ -3,84 +3,74 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simple AR Cube</title>
+    <title>3D Cube (No Camera)</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 </head>
 <body style="margin: 0; overflow: hidden;">
 
-    <button id="enter-ar" style="position: absolute; top: 20px; left: 20px; z-index: 100; padding: 10px;">
-        Enter AR
-    </button>
-
     <script>
-        let scene, camera, renderer, xrRefSpace, session;
+        let scene, camera, renderer, cube;
+        let isDragging = false;
+        let previousMouseX, previousMouseY;
 
-        async function startAR() {
-            if (navigator.xr) {
-                try {
-                    session = await navigator.xr.requestSession('immersive-ar', { requiredFeatures: ['local-floor'] });
+        function init() {
+            // Create scene
+            scene = new THREE.Scene();
 
-                    // Create WebGL context
-                    const canvas = document.createElement('canvas');
-                    const gl = canvas.getContext('webgl', { xrCompatible: true });
-                    document.body.appendChild(canvas);
+            // Create camera (Perspective view)
+            camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 100);
+            camera.position.z = 3;  // Move camera back to view the object
 
-                    // Initialize renderer
-                    renderer = new THREE.WebGLRenderer({ canvas: gl.canvas, alpha: true });
-                    renderer.xr.enabled = true;
+            // Create WebGL renderer
+            renderer = new THREE.WebGLRenderer({ antialias: true });
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            document.body.appendChild(renderer.domElement);
 
-                    // Set up AR session rendering
-                    session.updateRenderState({ baseLayer: new XRWebGLLayer(session, gl) });
+            // Add lighting
+            const light = new THREE.HemisphereLight(0xffffff, 0x444444);
+            scene.add(light);
 
-                    // Create the scene and camera
-                    scene = new THREE.Scene();
-                    camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 100);
-                    scene.add(camera);
+            // Create a rotating cube
+            const geometry = new THREE.BoxGeometry(1, 1, 1);
+            const material = new THREE.MeshStandardMaterial({ color: 0xff0000 });
+            cube = new THREE.Mesh(geometry, material);
+            scene.add(cube);
 
-                    // Lighting
-                    const light = new THREE.HemisphereLight(0xffffff, 0x444444);
-                    scene.add(light);
+            // Handle mouse drag rotation
+            document.addEventListener('mousedown', (event) => {
+                isDragging = true;
+                previousMouseX = event.clientX;
+                previousMouseY = event.clientY;
+            });
 
-                    // Create a red cube
-                    const geometry = new THREE.BoxGeometry(0.2, 0.2, 0.2);
-                    const material = new THREE.MeshStandardMaterial({ color: 0xff0000 });
-                    const cube = new THREE.Mesh(geometry, material);
+            document.addEventListener('mousemove', (event) => {
+                if (isDragging) {
+                    let deltaX = event.clientX - previousMouseX;
+                    let deltaY = event.clientY - previousMouseY;
 
-                    // Ensure the cube is placed in front of the camera
-                    cube.position.set(0, 0, -1);
-                    scene.add(cube);
+                    cube.rotation.y += deltaX * 0.01;
+                    cube.rotation.x += deltaY * 0.01;
 
-                    // Request reference space
-                    session.requestReferenceSpace('local-floor').then((refSpace) => {
-                        xrRefSpace = refSpace;
-                        session.requestAnimationFrame(renderFrame);
-                    });
-
-                    // Render function
-                    function renderFrame(time, frame) {
-                        let pose = frame.getViewerPose(xrRefSpace);
-                        if (pose) {
-                            let view = pose.views[0];
-
-                            // Position camera at AR origin
-                            camera.matrix.fromArray(view.transform.matrix);
-                            camera.matrix.decompose(camera.position, camera.quaternion, camera.scale);
-
-                            // Render the scene
-                            renderer.render(scene, camera);
-                        }
-                        session.requestAnimationFrame(renderFrame);
-                    }
-
-                } catch (err) {
-                    console.error("Error starting WebXR:", err);
+                    previousMouseX = event.clientX;
+                    previousMouseY = event.clientY;
                 }
-            } else {
-                alert("WebXR is not supported on this device.");
+            });
+
+            document.addEventListener('mouseup', () => {
+                isDragging = false;
+            });
+
+            // Animation loop
+            function animate() {
+                requestAnimationFrame(animate);
+                cube.rotation.y += 0.01; // Auto-rotate
+                renderer.render(scene, camera);
             }
+            animate();
         }
 
-        document.getElementById("enter-ar").addEventListener("click", startAR);
+        // Initialize the scene
+        init();
     </script>
 </body>
 </html>
