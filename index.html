@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WebXR Farmer AR</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@immersive-web/xr-polyfill@latest/dist/xr-polyfill.js"></script>
 </head>
 <body style="margin: 0; overflow: hidden;">
 
@@ -13,23 +12,23 @@
 
     <script>
         let scene, camera, renderer;
-        let xrSession = null;
 
         async function startXR() {
             if (navigator.xr) {
                 try {
-                    xrSession = await navigator.xr.requestSession('immersive-ar', { requiredFeatures: ['local-floor'] });
+                    const session = await navigator.xr.requestSession('immersive-ar', { requiredFeatures: ['local-floor'] });
+                    const gl = document.createElement('canvas').getContext('webgl', { xrCompatible: true });
 
-                    const gl = document.createElement('canvas').getContext('webgl');
                     renderer = new THREE.WebGLRenderer({ canvas: gl.canvas, alpha: true });
                     renderer.xr.enabled = true;
-
+                    renderer.setSize(window.innerWidth, window.innerHeight);
                     document.body.appendChild(renderer.domElement);
-                    
-                    const xrRefSpace = await xrSession.requestReferenceSpace('local');
+
+                    session.updateRenderState({ baseLayer: new XRWebGLLayer(session, gl) });
 
                     scene = new THREE.Scene();
                     camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+                    renderer.xr.setReferenceSpaceType('local-floor');
 
                     const light = new THREE.HemisphereLight(0xffffff, 0x444444);
                     scene.add(light);
@@ -38,23 +37,22 @@
                     const material = new THREE.MeshStandardMaterial({ color: 0x228B22 });
                     const plant = new THREE.Mesh(geometry, material);
                     plant.position.set(0, 0.5, -1);
-
                     scene.add(plant);
 
-                    function renderFrame(time, frame) {
-                        let pose = frame.getViewerPose(xrRefSpace);
+                    session.requestAnimationFrame((time, frame) => {
+                        let refSpace = session.referenceSpace;
+                        let pose = frame.getViewerPose(refSpace);
+
                         if (pose) {
                             renderer.render(scene, camera);
                         }
-                        xrSession.requestAnimationFrame(renderFrame);
-                    }
-
-                    xrSession.requestAnimationFrame(renderFrame);
+                        session.requestAnimationFrame(arguments.callee);
+                    });
                 } catch (err) {
-                    console.error("Error starting WebXR: ", err);
+                    console.error("Error starting WebXR:", err);
                 }
             } else {
-                alert("WebXR is not supported on this device.");
+                alert("WebXR not supported on this device.");
             }
         }
 
