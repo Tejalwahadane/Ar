@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://cdn.botpress.cloud/webchat/v2.2/inject.js"></script>
+<script src="https://files.bpcontent.cloud/2025/03/22/22/20250322221348-N1BQQ8PV.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Post a Job</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Post a Job</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="jobs.html">Find Jobs</a></li>
+                <li><a href="admin.html">Admin</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="post-job">
+        <h2>Post a Job</h2>
+        <form id="postJobForm">
+            <label>Job Title: <input type="text" id="title" required></label>
+            <label>Location: <input type="text" id="location" required></label>
+            <label>Salary: <input type="text" id="salary" required></label>
+            <label>Your Name: <input type="text" id="username" required></label>
+          <!-- <label>Profile Image URL: <input type="file" id="profileImage" placeholder="Paste image URL"></label>-->
+            <button type="submit">Submit</button>
+        </form>
+    </section>
+
+    <script>
+        document.getElementById("postJobForm").addEventListener("submit", function(e) {
+            e.preventDefault();
+            let job = {
+                title: document.getElementById("title").value,
+                location: document.getElementById("location").value,
+                salary: document.getElementById("salary").value,
+                username: document.getElementById("username").value,
+             //  profileImage: document.getElementById("profileImage").value || "default-profile.png"
+            };
+            let jobs = JSON.parse(localStorage.getItem("jobs")) || [];
+            jobs.push(job);
+            localStorage.setItem("jobs", JSON.stringify(jobs));
+            alert("Job Posted Successfully!");
+            window.location.href = "index3.html";
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,16 @@
+<header class="header">
+    <h2>KishanSetu</h2>
+    <input type="text" placeholder="Search..." class="search-bar">
+    <nav>
+        <a href="../dashboard/farmer_dashboard.php">Home</a>
+        <a href="../farmer/schemes.php">Scheme</a>
+        <a href="../dashboard/experts_community.php">Community</a>
+        <a href="../farmer/index3.html">Workers</a>
+        <a href="../dashboard/index.html">Products</a>
+        <a href="../realtime_weather_project/index2.php">Weather Updates</a>
+        <a href="../CROPRECOMENDATION/index1.php">Crop Recommendation</a>
+
+        <div id="google_element"></div>
+        <a href="../farmer/profile.php" class="profile-icon"> Profile <i class="fi fi-rr-user"></i></a>
+    </nav>
+</header>

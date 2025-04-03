@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://cdn.botpress.cloud/webchat/v2.2/inject.js"></script>
+<script src="https://files.bpcontent.cloud/2025/03/22/22/20250322221348-N1BQQ8PV.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farmers Job Portal</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="header">
+        <h2>AgriConnect</h2>
+        <input type="text" placeholder="Search..." class="search-bar">
+        <nav>
+            <a href="../dashboard/farmer_dashboard.php">Home</a>
+            <a href="../farmer/schemes.php">Scheme</a>
+            <a href="experts_community.php">Community</a>
+            <a href="../farmer/index3.html">Workers</a>
+            <a href="index.html">Products</a>
+    
+            <!-- Features Dropdown -->
+            <div class="dropdown">
+                <a href="#">Features ▼</a>
+                <div class="dropdown-content">
+                    <a href="../realtime_weather_project/index2.php">Weather Updates</a>
+                    <a href="../CROPRECOMENDATION/index1.php">Crop Recommendation</a>
+                </div>
+            </div>
+    
+            <div id="google_element"></div>
+            <a href="#">Notification <i class="fi fi-rs-bell"></i></a>
+            <a href="../farmer/profile.php" class="profile-icon"> Profile <i class="fi fi-rr-user"></i></a>
+        </nav>
+    </header>
+    
+    <style>
+    /* Basic dropdown styling */
+    .dropdown {
+        display: inline-block;
+        position: relative;
+    }
+    
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        background: black;
+        border: 1px solid #ccc;
+        min-width: 120px;
+    }
+    
+    .dropdown-content a {
+        display: block;
+        padding: 8px;
+        text-decoration: none;
+        color: black;
+    }
+    
+    .dropdown:hover .dropdown-content {
+        display: block;
+    }
+    </style>
+    <header>
+        <h1>Farmers Job Portal</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="jobs.html">Find Jobs</a></li>
+                <li><a href="post_job.html">Post a Job</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="job-listings">
+        <h2>Recent Job Listings</h2>
+        <input type="text" id="search" placeholder="Search Jobs...">
+        <div id="jobs-container"></div>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>
