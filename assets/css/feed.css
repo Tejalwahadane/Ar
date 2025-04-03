@@ -1,0 +1,558 @@
+/* 🌿 GENERAL RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* 🏠 BODY & PAGE LAYOUT */
+html,
+body {
+    height: 100%;
+    background: #f4f4f4;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+}
+
+/* 🌾 HEADER / NAVBAR */
+.header {
+    background: #253A25;
+    color: white;
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* 🧭 NAVIGATION LINKS */
+.header nav {
+    display: flex;
+    align-items: center;
+}
+
+.header nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 15px;
+    font-weight: bold;
+    transition: color 0.3s ease;
+    position: relative;
+}
+
+.header nav a:hover {
+    color: #9ACC5C;
+}
+
+/* 🔍 SEARCH BAR */
+.search-bar {
+    padding: 8px;
+    border: 2px solid #9ACC5C;
+    border-radius: 5px;
+    width: 160px;
+    transition: all 0.3s ease-in-out;
+    outline: none;
+}
+
+.search-bar:focus {
+    width: 250px;
+    border-color: #BCD99A;
+    box-shadow: 0 0 8px rgba(156, 204, 92, 0.5);
+}
+
+/* 📌 NAVBAR ICONS */
+.icons {
+    display: flex;
+    align-items: center;
+}
+
+.icons span {
+    font-size: 20px;
+    margin-left: 15px;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+}
+
+/* 🌎 TRANSLATOR DROPDOWN */
+.dropdown {
+    position: relative;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background: white;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    width: 120px;
+    top: 25px;
+    left: 0;
+    z-index: 1000;
+}
+
+.dropdown-content a {
+    display: block;
+    padding: 10px;
+    text-decoration: none;
+    color: black;
+}
+
+.dropdown-content a:hover {
+    background: #f1f1f1;
+}
+
+/* 🏆 TRANSLATOR CONTAINER */
+.translator-container {
+    display: flex;
+    align-items: center;
+    background: #253A25;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out;
+}
+
+.translator-container:hover {
+    background: #9ACC5C;
+}
+
+/* 🎨 GOOGLE TRANSLATE CUSTOMIZATION */
+#google_element {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px 10px;
+    background: transparent;
+    border-radius: 5px;
+}
+
+.goog-te-gadget-simple {
+    background: transparent !important;
+    border: none !important;
+    display: flex !important;
+    align-items: center !important;
+}
+
+.goog-te-gadget span,
+.goog-logo-link {
+    display: none !important;
+}
+
+.goog-te-gadget select {
+    background: #253A25;
+    color: white;
+    border: 2px solid #9ACC5C;
+    padding: 8px;
+    font-size: 14px;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    outline: none;
+}
+
+.goog-te-gadget select:hover {
+    background: #9ACC5C;
+    color: #253A25;
+}
+
+/* 🖥️ MAIN LAYOUT */
+.container {
+    display: flex;
+    gap: 20px;
+    flex: 1;
+    width: 100%;
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
+}
+
+/* 📂 SIDEBARS */
+.sidebar,
+.premium-sidebar {
+    background: #BCD99A;
+    padding: 20px;
+    border-radius: 10px;
+    width: 250px;
+}
+
+
+
+
+.container {
+    display: flex;
+    gap: 20px;
+    max-width: 1200px;
+    margin: auto;
+
+}
+
+/* 📌 POST SECTION */
+/* Main container */
+/* Reset Default Margin & Padding */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Fullscreen Main Container */
+.main-container {
+    width: 60%;
+    max-height: 467px;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    background: #f9f9f9;
+    overflow: hidden;
+}
+
+/* Sticky Create Post Section */
+.post-section {
+    position: sticky;
+    top: 0;
+    background: white;
+    padding: 15px;
+    border-bottom: 2px solid #ddd;
+    z-index: 10;
+}
+
+/* Create Post Input */
+.post-input {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: #ffffff;
+    padding: 12px;
+    border-radius: 50px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.profile-pic {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.input-box {
+    width: 100%;
+    padding: 12px 15px;
+    border: none;
+    outline: none;
+    border-radius: 50px;
+    background: #f1f1f1;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+/* Scrollable Posts Section */
+.post-container {
+    flex: 1;
+    overflow-y: auto;
+    /* Enable smooth scrolling */
+    padding: 20px;
+    scrollbar-width: none;
+    /* Hide scrollbar for Firefox */
+    -ms-overflow-style: none;
+    /* Hide scrollbar for IE/Edge */
+}
+
+/* Hide scrollbar for Chrome, Safari, Edge */
+.post-container::-webkit-scrollbar {
+    display: none;
+}
+
+/* Individual Posts */
+.post {
+    background: #ffffff;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-family: "Arial", sans-serif;
+    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease-in-out;
+}
+
+.post:hover {
+    transform: translateY(-2px);
+}
+
+
+
+/* 🔲 Overlay Pop-up*/
+/* 🔳 Popup Overlay */
+.post-popup-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+/* 📌 Popup Box */
+.post-popup {
+    background: white;
+    width: 700px;
+    /* Increased width */
+    padding: 25px;
+    /* More padding */
+    border-radius: 14px;
+    box-shadow: 0px 5px 12px rgba(0, 0, 0, 0.2);
+    animation: slideIn 0.3s ease-in-out;
+}
+
+/* 🔼 Header */
+.popup-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    /* More space between elements */
+}
+
+.profile-pic {
+    width: 60px;
+    /* Slightly bigger profile picture */
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+h3 {
+    margin: 0;
+    font-size: 20px;
+    /* Larger font */
+}
+
+small {
+    color: gray;
+    font-size: 13px;
+}
+
+/* ✖ Close Button */
+.close-btn {
+    background: none;
+    border: none;
+    font-size: 22px;
+    /* Slightly larger close button */
+    cursor: pointer;
+    color: gray;
+}
+
+/* 📝 Text Area */
+textarea {
+    width: 100%;
+    height: 120px;
+    /* More height */
+    margin-top: 12px;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    font-size: 18px;
+    /* Bigger font */
+    resize: none;
+}
+
+/* 📎 Media Icons */
+.popup-icons button {
+    font-size: 18px;
+    /* Increase text size */
+    padding: 10px 15px;
+    /* Increase button padding */
+    /* display: flex; */
+    align-items: center;
+    gap: 8px;
+    /* Space between icon and text */
+    border: none;
+    background: transparent;
+    cursor: pointer;
+
+}
+
+
+
+
+.popup-icons img {
+    width: 26px;
+    height: 26px;
+}
+
+/* 🚀 Post Button */
+.post-btn {
+    width: 100%;
+    padding: 12px;
+    margin-top: 12px;
+    border: none;
+    border-radius: 10px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    background: #007bff;
+    color: white;
+    transition: 0.3s;
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+.post-btn.enabled {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.post-btn:hover {
+    background: #0056b3;
+}
+
+/* 🎬 Animation */
+@keyframes slideIn {
+    from {
+        transform: translateY(-25px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+
+
+
+
+
+/* 💬 COMMENT SECTION */
+
+
+.comment-section {
+    flex: 1;
+    background: #9ACC5C;
+    /* New Green Theme */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    max-height: 500px;
+    color: #253A25;
+    /* Dark Text */
+}
+
+/* Scrollable Comments */
+.comments-container {
+    flex-grow: 1;
+    overflow-y: auto;
+    max-height: 350px;
+    padding-right: 10px;
+}
+
+/* 💬 Individual Comment */
+.comment {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.comment img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+    border: 2px solid #253A25;
+}
+
+.comment-content {
+    background: #C3E48F;
+    /* Light Green Bubble */
+    padding: 10px 15px;
+    border-radius: 15px;
+    max-width: 80%;
+}
+
+.comment-content p {
+    font-size: 14px;
+}
+
+/* ⏱ Timestamp and Like */
+.comment-info {
+    display: flex;
+    align-items: center;
+    font-size: 12px;
+    margin-top: 3px;
+    color: #253A25;
+}
+
+/* ❤️ Like Icon */
+.comment-info i {
+    margin-left: 10px;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.comment-info i:hover {
+    transform: scale(1.1);
+    color: #2E4A2E;
+}
+
+/* 🔽 Comment Input Box (Stays at Bottom) */
+.comment-input {
+    display: flex;
+    align-items: center;
+    background: #C3E48F;
+    /* Light Green */
+    padding: 8px;
+    border-radius: 30px;
+    margin-top: 10px;
+}
+
+.comment-input input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    color: #253A25;
+    outline: none;
+    padding: 8px;
+}
+
+.comment-input button {
+    background: #253A25;
+    /* Dark Green */
+    border: none;
+    padding: 8px 12px;
+    border-radius: 20px;
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.3s;
+}
+
+.comment-input button:hover {
+    background: #2E4A2E;
+}
+
+
+/* 📌 FOOTER */
+.footer {
+    background: #253A25;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}

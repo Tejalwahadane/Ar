@@ -1,0 +1,215 @@
+/* Import Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #E8F5E9;
+}
+
+/* Main Container */
+.container {
+    width: 950px;
+    height: 580px;
+    display: flex;
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Left Side */
+.left-side {
+    flex: 1;
+    background: url('https://plus.unsplash.com/premium_photo-1663945778994-11b3201882a0?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDExfHx8ZW58MHx8fHx8') no-repeat center center;
+    background-size: cover;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+    color: white;
+    position: relative;
+}
+
+.left-side::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.left-side h2, .left-side p {
+    position: relative;
+    z-index: 1;
+}
+
+.left-side h2 {
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.left-side p {
+    font-size: 14px;
+    margin-bottom: 4px;
+}
+
+/* Right Side */
+.right-side {
+    flex: 1.2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+}
+
+/* Header */
+header {
+    text-align: center;
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+header h1 {
+    font-size: 24px;
+    font-weight: 600;
+    color: #333;
+}
+
+header p {
+    font-size: 14px;
+    color: #666;
+}
+
+/* Registration Form */
+form {
+    width: 100%;
+    max-width: 400px;
+    text-align: left;
+}
+
+/* Two-Column Layout for First Row */
+.form-row {
+    display: flex;
+    justify-content: space-between;
+}
+
+/* Input Fields */
+.input-group {
+    width: 48%;
+    margin-bottom: 12px;
+}
+
+.input-group label {
+    font-size: 14px;
+    color: #333;
+    font-weight: 500;
+    display: block;
+    margin-bottom: 4px;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    outline: none;
+}
+
+.input-group input:focus {
+    border-color: #11a618;
+}
+
+/* Full-width Fields */
+.full-width {
+    width: 100%;
+    margin-bottom: 12px;
+}
+/* for register as field */
+#reg_as{
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    outline: none;
+}
+
+/* Register Button */
+button {
+    width: 100%;
+    padding: 12px;
+    background: #1ca069;
+    border: none;
+    color: white;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out;
+}
+
+button:hover {
+    background: #11a618;
+}
+
+/* Sign In Link */
+.signup-text {
+    text-align: center;
+    margin-top: 12px;
+    font-size: 14px;
+}
+
+.signup-text a {
+    text-decoration: none;
+    color: #118B50;
+    font-weight: 500;
+}
+
+.signup-text a:hover {
+    color: #11a618;
+    text-decoration: underline;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        width: 90%;
+        height: auto;
+    }
+
+    .left-side {
+        display: none;
+    }
+
+    .right-side {
+        padding: 25px;
+        text-align: center;
+    }
+
+    .form-row {
+        flex-direction: column;
+    }
+
+    .input-group {
+        width: 100%;
+    }
+}

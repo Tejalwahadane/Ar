@@ -1,0 +1,155 @@
+/* 🌾 General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background: #f8f9fa;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    overflow-x: hidden;
+}
+
+/* 🌿 Navbar */
+.navbar {
+    background: #253A25;
+    color: white;
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+.navbar .logo {
+    font-size: 20px;
+}
+
+.navbar nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 12px;
+    font-size: 16px;
+    transition: color 0.3s ease;
+}
+
+.navbar nav a:hover {
+    color: #9ACC5C;
+}
+
+/* 📌 Main Container */
+.container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    width: 90%;
+    max-width: 1100px;
+    margin: 100px auto 20px;
+}
+
+/* 🔹 Main Content */
+.main-content {
+    flex: 2;
+    background: white;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+    height: auto;
+    overflow-y: auto;
+}
+
+/* 📝 Post Box */
+.post-box {
+    background: #F0F3F4;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.post-options {
+    margin-top: 10px;
+}
+
+.post-options button {
+    background: #253A25;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    margin-right: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.post-options button:hover {
+    background: #9ACC5C;
+}
+
+/* 📌 Posts */
+.post {
+    background: white;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.post h3 {
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+
+.post p {
+    font-size: 15px;
+    color: #444;
+}
+
+/* 📊 Government Schemes (Right Sidebar) */
+.schemes-sidebar {
+    flex: 1;
+    background: #9ACC5C;
+    padding: 20px;
+    border-radius: 8px;
+    height: fit-content;
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.schemes-sidebar h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: black;
+}
+
+.schemes-sidebar ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.schemes-sidebar ul li {
+    padding: 8px 0;
+    font-size: 14px;
+    color: black;
+}
+
+/* 🌍 Responsive Design */
+@media (max-width: 1024px) {
+    .container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .schemes-sidebar {
+        width: 100%;
+        margin-top: 20px;
+    }
+}

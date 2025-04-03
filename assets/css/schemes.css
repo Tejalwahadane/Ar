@@ -1,0 +1,525 @@
+/* 🌿 General Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    height: 100%;
+    background: #f4f4f4;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+}
+.con {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    padding: 20px;
+}
+/* 📝 Page Title */
+/* 🌟 Modern Page Header */
+.head {
+    text-align: center;
+
+    padding: 20px;
+    background: linear-gradient(135deg, #E8F5E9, #F0F8EC);
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s;
+}
+
+/* 🎨 Title Styling */
+.head h2 {
+    font-size: 32px;
+    color: #2E7D32;
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+}
+
+/* 📜 Subtitle Styling */
+.head p {
+    font-size: 18px;
+    color: #444;
+    font-weight: 500;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* 🌱 Responsive Design */
+@media (max-width: 768px) {
+    .head {
+        padding: 15px;
+    }
+
+    .head h2 {
+        font-size: 26px;
+    }
+
+    .head p {
+        font-size: 16px;
+    }
+}
+
+
+/* 📌 Scheme Cards */
+/* 🌱 Container for All Schemes */
+/* 🌱 Main Container */
+.scheme-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 50px;
+    padding: 50px 20px;
+    background: #f8f9fa;
+}
+
+/* 🎴 Scheme Block */
+.scheme-block {
+    width: 90%;
+    max-width: 1100px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    background: white;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* ✨ Alternate Blocks */
+.scheme-block:nth-child(odd) {
+    flex-direction: row;
+}
+
+.scheme-block:nth-child(even) {
+    flex-direction: row-reverse;
+}
+
+/* 🖼 Image Styling */
+.scheme-image {
+    width: 40%;
+    max-width: 350px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.scheme-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+/* 🏷 Text Section */
+.scheme-text {
+    width: 55%;
+    padding: 20px;
+}
+
+.scheme-title {
+    font-size: 22px;
+    font-weight: bold;
+    color: #2d5f2d;
+    margin-bottom: 10px;
+}
+
+.scheme-text p {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 15px;
+}
+
+/* 🎯 Apply Button */
+.apply-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background: #2E7D32;
+    color: #222;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+.apply-btn:hover {
+    background: #9ACC5C;
+}
+
+/* 🌟 Hover Effect */
+.scheme-block:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+/* 📱 Responsive Design */
+@media (max-width: 900px) {
+    .scheme-block {
+        flex-direction: column !important;
+        text-align: center;
+        padding: 20px;
+    }
+
+    .scheme-image {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .scheme-text {
+        width: 100%;
+    }
+}
+
+
+
+/* 📱 Responsive Design */
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .nav-links {
+        margin-top: 10px;
+        gap: 10px;
+    }
+}
+
+
+/* discover section------------------------------------------------------ */
+/* 📜 Container */
+.container {
+    width: 100%;
+    max-width: 1100px;
+    text-align: center;
+    padding: 40px 20px;
+}
+
+/* 📝 Content Section */
+/* 🎯 Full-Screen Hero Section */
+/* 🌄 Full-Screen Hero Section */
+.hero-section {
+    width: 100%;
+    height: 100vh;
+    /* Full viewport height */
+    background: linear-gradient(to top, #A8E6A2, #F4F9F4);
+    /* Soft green to white gradient */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px;
+}
+
+/* 🎭 Hero Content */
+.hero-content {
+    animation: fadeIn 1s ease-in-out;
+}
+
+/* 🔥 Heading */
+.hero-content h2 {
+    font-size: 48px;
+    font-weight: 700;
+    color: #222;
+    opacity: 0;
+    animation: fadeInText 1.2s ease-in-out forwards;
+}
+
+.hero-content h2 span {
+    color: #2E7D32;
+    /* Darker Green */
+}
+
+/* 📝 Paragraph */
+.hero-content p {
+    font-size: 22px;
+    color: #555;
+    margin-top: 10px;
+    opacity: 0;
+    animation: fadeInText 1.5s ease-in-out forwards;
+}
+
+/* 🎬 Fade-in Animation */
+@keyframes fadeInText {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 📱 Responsive Design */
+@media (max-width: 900px) {
+    h2 {
+        font-size: 36px;
+    }
+
+    p {
+        font-size: 18px;
+    }
+}
+
+
+/* 📌 Left Side - Image */
+.faq-image {
+    flex: 1;
+    text-align: center;
+}
+
+.faq-image img {
+    max-width: 90%;
+    height: auto;
+}
+
+/* 📖 Right Side - FAQ Content */
+.faq-content {
+    flex: 1;
+    padding-left: 40px;
+}
+
+.faq-title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #253A25;
+    margin-bottom: 10px;
+}
+
+.faq-subtitle {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+/* 📝 FAQ Accordion */
+.faq-box {
+    background: white;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.faq-question {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
+    font-size: 14px;
+    color: #555;
+    margin-top: 10px;
+}
+
+/* ⬇️ Expand/Collapse Icon */
+.faq-box i {
+    font-size: 14px;
+    transition: transform 0.3s ease-in-out;
+}
+
+/* 🌟 Active FAQ */
+.faq-box.active .faq-answer {
+    max-height: 100px;
+    opacity: 1;
+}
+
+.faq-box.active i {
+    transform: rotate(180deg);
+}
+
+/* ✅ View More Button */
+.view-more-btn {
+    display: inline-block;
+    padding: 10px 15px;
+    background: #253A25;
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+    border-radius: 5px;
+    transition: background 0.3s;
+    margin-top: 15px;
+}
+
+.view-more-btn:hover {
+    background: #9ACC5C;
+}
+
+/* 📱 Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .faq-content {
+        padding-left: 0;
+        margin-top: 20px;
+    }
+}
+
+.header {
+    background: #253A25;
+    color: white;
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* 🧭 NAVIGATION LINKS */
+.header nav {
+    display: flex;
+    align-items: center;
+}
+
+.header nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 15px;
+    font-weight: bold;
+    transition: color 0.3s ease;
+    position: relative;
+}
+
+.header nav a:hover {
+    color: #9ACC5C;
+}
+
+/* 🔍 SEARCH BAR */
+.search-bar {
+    padding: 8px;
+    border: 2px solid #9ACC5C;
+    border-radius: 5px;
+    width: 160px;
+    transition: all 0.3s ease-in-out;
+    outline: none;
+}
+
+.search-bar:focus {
+    width: 250px;
+    border-color: #BCD99A;
+    box-shadow: 0 0 8px rgba(156, 204, 92, 0.5);
+}
+
+/* 📌 NAVBAR ICONS */
+.icons {
+    display: flex;
+    align-items: center;
+}
+
+.icons span {
+    font-size: 20px;
+    margin-left: 15px;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+}
+
+/* 🌎 TRANSLATOR DROPDOWN */
+.dropdown {
+    position: relative;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background: white;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    width: 120px;
+    top: 25px;
+    left: 0;
+    z-index: 1000;
+}
+
+.dropdown-content a {
+    display: block;
+    padding: 10px;
+    text-decoration: none;
+    color: black;
+}
+
+.dropdown-content a:hover {
+    background: #f1f1f1;
+}
+
+/* 🏆 TRANSLATOR CONTAINER */
+.translator-container {
+    display: flex;
+    align-items: center;
+    background: #253A25;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s ease-in-out;
+}
+
+.translator-container:hover {
+    background: #9ACC5C;
+}
+
+/* 🎨 GOOGLE TRANSLATE CUSTOMIZATION */
+#google_element {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px 10px;
+    background: transparent;
+    border-radius: 5px;
+}
+
+.goog-te-gadget-simple {
+    background: transparent !important;
+    border: none !important;
+    display: flex !important;
+    align-items: center !important;
+}
+
+.goog-te-gadget span,
+.goog-logo-link {
+    display: none !important;
+}
+
+.goog-te-gadget select {
+    background: #253A25;
+    color: white;
+    border: 2px solid #9ACC5C;
+    padding: 8px;
+    font-size: 14px;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    outline: none;
+}
+
+.goog-te-gadget select:hover {
+    background: #9ACC5C;
+    color: #253A25;
+}
